@@ -1,0 +1,36 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "taskName": "build opengl-app",
+            "type": "shell",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "windows": {
+                "command": "",
+                "args": []
+            },
+            "osx": {
+                "command": "rm -rf build; mkdir build; cd build; clang++",
+                "args": [
+                    "-g",
+                    "-I ${workspaceRoot}/include/",
+                    "-framework OpenGL",
+                    "-lglew",
+                    "-lglfw",
+                    "${workspaceRoot}/src/cpp/GLSLProgram.cpp",
+                    "${workspaceRoot}/src/cpp/Model.cpp",
+                    "${workspaceRoot}/src/cpp/OBJLoader.cpp",
+                    "${workspaceRoot}/src/cpp/App.cpp",
+                    "-o opengl-app"
+                ]
+            },
+            "linux": {
+                "command": "",
+                "args": []
+            }
+        }
+    ]
+}
