@@ -28,8 +28,19 @@
                 ]
             },
             "linux": {
-                "command": "",
-                "args": []
+                "command": "rm -rf build; mkdir build; cd build; g++",
+                "args": [
+                    "-g",
+                    "-I ${workspaceRoot}/include/",
+                    "${workspaceRoot}/src/cpp/GLSLProgram.cpp",
+                    "${workspaceRoot}/src/cpp/Model.cpp",
+                    "${workspaceRoot}/src/cpp/OBJLoader.cpp",
+                    "${workspaceRoot}/src/cpp/App.cpp",
+                    "-lGL",
+                    "-lGLEW",
+                    "-lglfw",
+                    "-o opengl-app"
+                ]
             }
         }
     ]
