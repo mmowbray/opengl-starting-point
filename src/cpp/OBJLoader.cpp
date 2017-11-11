@@ -4,7 +4,7 @@
 #include "OBJLoader.h"
 
 #include "glm/glm.hpp"
-#include <vector>
+#include <string.h>
 
 void OBJLoader::loadOBJ(const std::string &source, std::vector<glm::vec3> & vertices, std::vector<glm::vec3> & normals) {
     std::vector<unsigned int> vertexIndices, uvIndices, normalIndices;
