@@ -28,10 +28,15 @@ brew update
 brew install glfw glew glm
 ```
 
-### Windows 10
-
-(coming soon)
-
 ### Ubuntu Linux 17.10
+
+The Ubuntu software repos have up-to-date versions of all three dependencies
+
+```
+sudo apt-get update
+sudo apt-get install build-essential libglfw3-dev libglew-dev libglm-dev
+```
+
+### Windows 10
 
 (coming soon)
