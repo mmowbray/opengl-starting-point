@@ -2,15 +2,14 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "taskName": "build opengl-app",
+            "label": "build opengl-app",
             "type": "shell",
             "group": {
                 "kind": "build",
                 "isDefault": true
             },
             "windows": {
-                "command": "",
-                "args": []
+                "command": ".vscode/build_windows.bat"
             },
             "osx": {
                 "command": "rm -rf build; mkdir build; cd build; clang++",
@@ -42,6 +41,11 @@
                     "-o opengl-app"
                 ]
             }
+        },
+        {
+            "label": "run opengl-app",
+            "type": "shell",
+            "command": "./build/opengl-app"
         }
     ]
 }
