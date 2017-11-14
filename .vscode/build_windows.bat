@@ -8,5 +8,4 @@ set compilerflags=/Od /Zi /EHsc /Fo.\build\
 set sourcefiles=src/cpp/*.cpp
 set linkerflags=opengl32.lib glew32.lib glfw3dll.lib /OUT:build/opengl-app.exe
 
-cl.exe %compilerflags% %sourcefiles% /I include /link %linkerflags% /LIBPATH:libf
-
+cl.exe %compilerflags% %sourcefiles% /I include /link %linkerflags% /LIBPATH:lib
