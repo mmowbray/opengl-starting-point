@@ -19,10 +19,7 @@
                     "-framework OpenGL",
                     "-lglew",
                     "-lglfw",
-                    "${workspaceRoot}/src/cpp/GLSLProgram.cpp",
-                    "${workspaceRoot}/src/cpp/Model.cpp",
-                    "${workspaceRoot}/src/cpp/OBJLoader.cpp",
-                    "${workspaceRoot}/src/cpp/App.cpp",
+                    "${workspaceRoot}/src/cpp/*.cpp",
                     "-o opengl-app"
                 ]
             },
@@ -31,10 +28,7 @@
                 "args": [
                     "-g",
                     "-I ${workspaceRoot}/include/",
-                    "${workspaceRoot}/src/cpp/GLSLProgram.cpp",
-                    "${workspaceRoot}/src/cpp/Model.cpp",
-                    "${workspaceRoot}/src/cpp/OBJLoader.cpp",
-                    "${workspaceRoot}/src/cpp/App.cpp",
+                    "${workspaceRoot}/src/cpp/*.cpp",
                     "-lGL",
                     "-lGLEW",
                     "-lglfw",
