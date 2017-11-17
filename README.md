@@ -2,6 +2,8 @@
 
 Starting point for modern OpenGL (v3.0+) projects in C++ (Visual Studio Code project).
 
+Works on MacOS, Ubuntu, and Windows 10.
+
 Uses glew, glfw3, and glm.
 
 ## Instructions
@@ -10,15 +12,15 @@ Designed to be edited and run with Visual Studio Code.
 
 Install [Visual Studio Code](https://code.visualstudio.com), then follow the per-platform instructions below.
 
-Be sure to install these plugins for VS Code:
+(Recommended) Install these plugins for VS Code:
 
 * C/C++ Intellisense/debugging by Microsoft
 * Shader languages support by slevesque
 
-Afterwards, clone the repo and follow per-platform instructions below.
+Afterwards, download this repository and follow the per-platform instructions below.
 
-Then, open the root directory of this repo in Visual Studio Code and press Cmd+Shift+B to build.
-To run (any platform):
+Then, unzip open this repository's root folder in Visual Studio Code and press Ctrl+Shift+B (Cmd+Shift+B on MacOS) to build.
+Then, to run (any platform), in VS Code click Task -> Run Task -> 'run opengl-app'
 
 ```
 ./build/opengl-app
@@ -46,10 +48,10 @@ sudo apt-get install build-essential libglfw3-dev libglew-dev libglm-dev
 
 ### Windows 10 x64
 
-Unfortunately, no handy software repository exist in the Window world like they do in the *\*nix* world.
+Unfortunately, no handy software repositories exist in the Windows world like they do in the *\*nix* world.
 Fortunately, it's [not too painful](https://blogs.msdn.microsoft.com/vcblog/2016/10/24/building-your-c-application-with-visual-studio-code) to set up.
 
-First, either install Visual Studio 2015 or just the [Visual C++ 2015 Tools](http://landinghub.visualstudio.com/visual-cpp-build-tools).
+First, either install the [Visual C++ 2015 Tools](http://landinghub.visualstudio.com/visual-cpp-build-tools) or just Visual Studio 2015.
 
 If you used just the tools, change .vscode/build_windows line 6 from:
 
@@ -60,6 +62,7 @@ to
 ```
 call “C:\Program Files (x86)\Microsoft Visual C++ Build Tools\vcbuildtools.bat” x64
 ```
+### Add dependencies
 
 Create a *lib* folder in the root of the repo.
 
@@ -83,3 +86,5 @@ Download the latest release from [here](https://github.com/g-truc/glm/tags).
 * From within the .zip, extract the glm folder to your include folder.
 
 Building should now work 😄
+
+Note: If you receive an error about a missing 'vcvarsall.bat' you need to [modify your Visual Studio 2015 installation](https://stackoverflow.com/a/35243904).
