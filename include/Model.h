@@ -2,8 +2,7 @@
 
 #include<string>
 #include <GL/glew.h>
-#include <glm/detail/type_mat.hpp>
-#include <glm/detail/type_mat4x4.hpp>
+#include <glm/mat4x4.hpp>
 
 class Model{
 private:
