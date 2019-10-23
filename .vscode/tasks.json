@@ -2,7 +2,7 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "taskName": "build opengl-app",
+            "label": "build opengl-app",
             "type": "shell",
             "group": {
                 "kind": "build",
@@ -12,16 +12,8 @@
                 "command": ".vscode/build_windows.bat"
             },
             "osx": {
-                "command": "rm -rf build; mkdir build; cd build; clang++",
-                "args": [
-                    "-g",
-                    "-I ${workspaceRoot}/include/",
-                    "-framework OpenGL",
-                    "-lglew",
-                    "-lglfw",
-                    "${workspaceRoot}/src/cpp/*.cpp",
-                    "-o opengl-app"
-                ]
+                "command": "rm -rf build; mkdir build; cd build; clang++ -g -I ${workspaceRoot}/include/ -framework OpenGL -lglew -lglfw ${workspaceRoot}/src/cpp/*.cpp -o opengl-app"
+                
             },
             "linux": {
                 "command": "rm -rf build; mkdir build; cd build; g++",
@@ -37,7 +29,7 @@
             }
         },
         {
-            "taskName": "run opengl-app",
+            "label": "run opengl-app",
             "type": "shell",
             "command": "./build/opengl-app"
         }
