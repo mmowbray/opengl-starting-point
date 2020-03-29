@@ -17,7 +17,6 @@
             },
             "linux": {
                 "command": "rm -rf build; mkdir build; cd build; g++ -g -I ${workspaceRoot}/include/ ${workspaceRoot}/src/cpp/*.cpp -lGL -lGLEW -lglfw -o opengl-app"
-                ]
             }
         },
         {
