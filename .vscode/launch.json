@@ -1,9 +1,10 @@
 {
         "version": "0.2.0",
         "configurations": [
+            
             {
                 "name": "(lldb) Launch",
-                "preLaunchTask": "opengl-app",
+                "preLaunchTask": "run opengl-app",
                 "type": "cppdbg",
                 "request": "launch",
                 "program": "${workspaceRoot}/build/opengl-app",
