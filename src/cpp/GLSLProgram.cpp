@@ -1,12 +1,15 @@
 #include "GLSLProgram.h"
 #include <vector>
-#include <fstream>
+#include <iostream>
+#include <fstream> 
 #include "glm/gtc/type_ptr.hpp"
 
 using glm::vec3;
 using glm::vec4;
 using glm::mat3;
 using glm::mat4;
+
+using namespace std;
 
 GLSLProgram::GLSLProgram()
 {
@@ -30,7 +33,7 @@ bool GLSLProgram::compileShaderFromString(const string & source, GLuint type)
     if (isCompiled == GL_TRUE)
     {
         glAttachShader(handle, shaderID);
-        printf("Shader compiled successfully.\n");
+        cout << "Shader compiled successfully." << endl;
     }
     else
     {
@@ -41,7 +44,7 @@ bool GLSLProgram::compileShaderFromString(const string & source, GLuint type)
             std::vector<char> infoLog(maxLength + 1);
             glGetShaderInfoLog(shaderID, maxLength, nullptr, infoLog.data());
             logString = string(std::begin(infoLog), std::end(infoLog));
-            printf("One or more errors were encountered while compiling this shader.\n");
+            cout << "One or more errors were encountered while compiling this shader.\n" << endl;
         }
     }
 
@@ -78,7 +81,7 @@ bool GLSLProgram::link()
     if(isLinked == GL_TRUE)
     {
         linked = true;
-        printf("Shader program linked successfully.\n");
+        cout << "Shader program linked successfully." << endl;
     }else
     {
         GLint maxLength = 0;
@@ -211,12 +214,12 @@ void GLSLProgram::printActiveUniforms()
     GLsizei length; // name length
 
     glGetProgramiv(handle, GL_ACTIVE_UNIFORMS, &count);
-    printf("Active Uniforms: %d\n", count);
+    cout << "Active Uniforms:" <<  count << endl;
 
     for (i = 0; i < count; i++)
     {
         glGetActiveUniform(handle, (GLuint)i, bufSize, &length, &size, &type, name);
-        printf("Uniform #%d Type: %u Name: %s\n", i, type, name);
+        cout << "Uniform #" << i << "Type: " << type << ">> Name: " << name << endl;
     }
 }
 
@@ -233,12 +236,12 @@ void GLSLProgram::printActiveAttribs()
     GLsizei length; // name length
 
     glGetProgramiv(handle, GL_ACTIVE_ATTRIBUTES, &count);
-    printf("Active Attributes: %d\n", count);
+    cout << "Active Attributes: " << count << endl;
 
     for (i = 0; i < count; i++)
     {
         glGetActiveAttrib(handle, (GLuint)i, bufSize, &length, &size, &type, name);
-        printf("Attribute #%d Type: %u Name: %s\n", i, type, name);
+        cout <<  "Attribute #" << i << "Type: "  << type << "Name: " <<  name << endl;
     }
 }
 

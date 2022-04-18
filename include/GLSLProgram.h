@@ -1,7 +1,7 @@
 #pragma once
 
 #include <string>
-#include <GL/glew.h>
+#include <glad/glad.h>
 #include "glm/mat4x2.hpp"
 
 using std::string;

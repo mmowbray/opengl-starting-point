@@ -1,8 +1,10 @@
 #include "App.h"
 
 #include <fstream>
+#include <format>
+#include <iostream>
 
-#include <GL/glew.h>
+#include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <GLSLProgram.h>
 #include <Model.h>
@@ -13,8 +15,11 @@
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
 
+using namespace std;
+
 GLSLProgram *shader;
 Model *cube;
+
 
 void framebuffer_size_callback(GLFWwindow*, int new_screen_width, int new_screen_height)
 {
@@ -27,23 +32,23 @@ GLSLProgram* setupShader(const char* shaderVSSource, const char* shaderFSSource)
 
     if(!shaderProgram->compileShaderFromFile(shaderVSSource, GL_VERTEX_SHADER))
     {
-        printf("Vertex shader failed to compile! %s\n", shaderProgram->log().c_str());
+        cout << "Vertex shader failed to compile!" <<  shaderProgram->log().c_str() << endl;
         delete shaderProgram;
-        exit(1);
+        return NULL;
     }
 
     if (!shaderProgram->compileShaderFromFile(shaderFSSource, GL_FRAGMENT_SHADER))
     {
-        printf("Fragment shader failed to compile! %s\n", shaderProgram->log().c_str());
+        cout << "Fragment shader failed to compile! " <<  shaderProgram->log().c_str() << endl; 
         delete shaderProgram;
-        exit(1);
+        return NULL;
     }
 
     if (!shaderProgram->link())
     {
-        printf("Shader program failed to link! %s\n", shaderProgram->log().c_str());
+        std::cout << "Shader program failed to link! " << shaderProgram->log().c_str() << endl;
         delete shaderProgram;
-        exit(1);
+        return NULL;
     }
 
     shaderProgram->printActiveUniforms();
@@ -57,7 +62,7 @@ int main()
     GLFWwindow* window;
 
     if (!glfwInit())
-        exit(1);
+        return -1;
 
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
@@ -72,18 +77,21 @@ int main()
     if (!window)
     {
         glfwTerminate();
-        exit(1);
+        return -1;
     }
 
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
     glfwMakeContextCurrent(window);
 
-    glewExperimental = GL_TRUE;
-
-    if (glewInit() != GLEW_OK)
-        exit(1);
+    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+    {
+        std::cout << "Failed to initialize GLAD" << std::endl;
+        return -1;
+    }  
 
     shader = setupShader("src/glsl/cube.vs", "src/glsl/cube.fs");
+    if(shader == NULL)
+        return -1;
     cube = new Model("assets/models/cube.obj");
 
     glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
@@ -99,5 +107,5 @@ int main()
         glfwPollEvents();
     }
 
-    exit(0);
+    return 0;
 }
